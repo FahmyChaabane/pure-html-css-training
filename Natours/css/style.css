@@ -1,0 +1,188 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+*,
+*::after, /* we gotta do it or else each element with after won't be considered by these properties*/
+*::before /* same */ {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; /* to enforce inheritence */
+}
+
+html {
+  /* the root element is declared in the html selector*/
+  font-size: 62.5%; /* to apply a unit config for all elements depending on screen*/
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #777;
+  padding: 2rem;
+
+  box-sizing: border-box; /* so that all element who are child of body inherit this*/
+}
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(14, 43, 206, 0.684),
+      rgba(216, 25, 41, 0.63)
+    ),
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.header__logo {
+  height: 3.5rem;
+}
+
+.header__logo:hover {
+  animation: moveInRight 3s; /*we can apply animation anywhere we want*/
+}
+
+.header__text-box {
+  position: absolute;
+  top: 40%; /* these guys related to the parent element*/
+  left: 50%; /* these guys related to the parent element*/
+  transform: translate(
+    -50%,
+    -50%
+  ); /* but these two related to the element itself*/
+
+  text-align: center; /* to center the <a/> */
+}
+
+.heading-primary {
+  color: #ffff;
+  text-transform: uppercase;
+
+  backface-visibility: hidden; /* hack to fix the shakiness*/
+}
+
+.heading-primary--main {
+  display: block; /* to turn it into a block level element*/
+  font-size: 60px;
+  font-weight: 400; /*h1 has a highier weight by default*/
+  letter-spacing: 3.5rem;
+
+  animation-name: moveInLeft;
+  animation-duration: 3s;
+
+  /*
+  animation-delay: 3s; // wait before lanching the animation
+  animation-iteration-count: 3; // repeat the animation 3 times
+  animation-timing-function: ease-in; // defines how animation proceed (start slow and then get faster)
+  */
+}
+
+.heading-primary--sub {
+  display: block; /* to turn it into a block level element*/
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.74rem;
+
+  margin-bottom: 3.5rem;
+
+  animation: moveInRight 2s ease-out; /* we can declare animation in one shot*/
+}
+
+@keyframes moveInLeft {
+  0% {
+    /* from start */
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  60% {
+    /* in the middle */ /* to show we can even push it anyway we want*/
+    transform: translateX(1rem);
+  }
+
+  100% {
+    /* to end */
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    /* from start */
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  100% {
+    /* to end */
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInBottom {
+  0% {
+    /* from start */
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+
+  100% {
+    /* to end */
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn:link,
+.btn:visited {
+  /*sudo class*/
+  /* cuz we gonna have mutiple buttons*/
+  text-transform: uppercase;
+  text-decoration: none; /* to delete that underlines of <a/>*/
+  padding: 1.5rem 4rem; /* 15 top button, rest left & right .. this is to make button looks big*/
+  display: inline-block; /* display it as an inline block*/
+  border-radius: 10rem;
+  font-size: 1.8rem;
+
+  transition: all 0.2s; /* to apply animation here (similar to using keyframes)*/
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); /* 1 for x, 2 for y, 3 if + means down*/
+}
+
+.btn:active {
+  /* when clicked*/
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+.btn--white {
+  background-color: #ffff;
+  color: #777;
+}
+
+.btn--animated {
+  animation: moveInBottom 3s 0.75s; /*0.75s delay*/
+  animation-fill-mode: backwards; /*apply the animation for the 0% it's defined to */
+}
