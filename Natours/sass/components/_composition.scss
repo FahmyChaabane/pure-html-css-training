@@ -1,0 +1,39 @@
+.composition {
+  position: relative;
+
+  &__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.4);
+    border-radius: 0.2rem;
+    position: absolute; // it becomes not related to any box demension (place it whereever the hell u want)
+    outline-offset: 1.2rem; // (1)
+
+    transition: all 0.75s; /* to apply animation here (similar to using keyframes)*/
+
+    &--p1 {
+      top: 0rem; /* these guys related to the parent element*/
+      left: 0rem; // start from the right
+    }
+    &--p2 {
+      top: 5rem; /* these guys related to the parent element*/
+      right: 0rem; // start from the right
+    }
+    &--p3 {
+      top: 15rem;
+      left: 10%; // start from the right
+    }
+    &:hover {
+      transform: scale(1.1) translateY(-2rem);
+      box-shadow: 0 2.5rem 4rem rgba($color-black, 0.5);
+      z-index: 1;
+      // border: 0.5rem solid $color-dark-blue; (2)
+      // padding: 2rem; (2)
+      outline: 0.25rem solid $color-dark-blue; // this replaces (1) and (2)
+    }
+  }
+
+  &:hover &__photo:not(:hover) {
+    // when we hover the composition, we select the composition photo, which is not hovered
+    opacity: 0.5;
+  }
+}

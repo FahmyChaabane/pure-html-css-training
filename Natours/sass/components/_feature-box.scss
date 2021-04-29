@@ -1,0 +1,32 @@
+.feature-box {
+  background-color: rgba($color: $color-white, $alpha: 0.7);
+  font-size: 1.5rem;
+  height: 32vh;
+  padding: 2.5rem 3rem 2.5rem;
+  text-align: center;
+  border-radius: 0.3rem;
+  box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.15);
+  transition: all 0.4s; // to make animation look smooth
+  //  margin: 10rem 0;
+
+  &__icon {
+    font-size: 6rem;
+    background-image: linear-gradient(
+      to right,
+      $color-dark-blue,
+      $color-dark-red /* valable in scsss only*/
+    );
+    background-clip: text; // to get rid of warning the below one kept yelloing about, not sure what it does
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+
+  &__text {
+  }
+
+  &:hover {
+    transform: scale(1.05) translateY(-1rem);
+
+    color: $color-black;
+  }
+}

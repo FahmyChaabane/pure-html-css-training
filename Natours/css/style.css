@@ -1,23 +1,68 @@
 /*
 COLORS:
-
 Light green: #7ed56f
 Medium green: #55c57a
 Dark green: #28b485
-
 */
 *,
-*::after, /* we gotta do it or else each element with after won't be considered by these properties*/
-*::before /* same */ {
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; /* to enforce inheritence */
-}
+  box-sizing: inherit;
+  /* to enforce inheritence */ }
 
 html {
   /* the root element is declared in the html selector*/
-  font-size: 62.5%; /* to apply a unit config for all elements depending on screen*/
-}
+  font-size: 62.5%;
+  /* to apply a unit config for all elements depending on screen*/
+  /*rhis defines what 1rem is*/ }
+
+body {
+  box-sizing: border-box;
+  /* so that all element who are child of body inherit this*/ }
+
+@keyframes moveInLeft {
+  0% {
+    /* from start */
+    opacity: 0;
+    transform: translateX(-10rem); }
+  100% {
+    /* to end */
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes moveInRight {
+  0% {
+    /* from start */
+    opacity: 0;
+    transform: translateX(10rem); }
+  100% {
+    /* to end */
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes moveInBottom {
+  0% {
+    /* from start */
+    opacity: 0;
+    transform: translateY(10rem); }
+  100% {
+    /* to end */
+    opacity: 1;
+    transform: translateY(0); } }
+
+.u-center-text {
+  text-align: center; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem; }
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem; }
 
 body {
   font-family: "Lato", sans-serif;
@@ -25,164 +70,234 @@ body {
   font-size: 1.6rem;
   line-height: 1.7;
   color: #777;
-  padding: 2rem;
-
-  box-sizing: border-box; /* so that all element who are child of body inherit this*/
-}
-
-.header {
-  height: 95vh;
-  background-image: linear-gradient(
-      to right bottom,
-      rgba(14, 43, 206, 0.684),
-      rgba(216, 25, 41, 0.63)
-    ),
-    url(../img/hero.jpg);
-  background-size: cover;
-  background-position: top;
-  position: relative;
-
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-}
-
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-}
-
-.header__logo {
-  height: 3.5rem;
-}
-
-.header__logo:hover {
-  animation: moveInRight 3s; /*we can apply animation anywhere we want*/
-}
-
-.header__text-box {
-  position: absolute;
-  top: 40%; /* these guys related to the parent element*/
-  left: 50%; /* these guys related to the parent element*/
-  transform: translate(
-    -50%,
-    -50%
-  ); /* but these two related to the element itself*/
-
-  text-align: center; /* to center the <a/> */
-}
+  padding: 2rem; }
 
 .heading-primary {
-  color: #ffff;
+  color: #fff;
   text-transform: uppercase;
+  backface-visibility: hidden;
+  /* hack to fix the shakiness*/ }
+  .heading-primary--main {
+    display: block;
+    /* to turn it into a block level element*/
+    font-size: 6rem;
+    font-weight: 400;
+    /*h1 has a highier weight by default*/
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 3s;
+    /*
+      animation-delay: 3s; // wait before lanching the animation
+      animation-iteration-count: 3; // repeat the animation 3 times
+      animation-timing-function: ease-in; // defines how animation proceed (start slow and then get faster)
+      */ }
+  .heading-primary--sub {
+    display: block;
+    /* to turn it into a block level element*/
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.74rem;
+    margin-bottom: 3.5rem;
+    animation: moveInRight 2s ease-out;
+    /* we can declare animation in one shot*/ }
 
-  backface-visibility: hidden; /* hack to fix the shakiness*/
-}
-
-.heading-primary--main {
-  display: block; /* to turn it into a block level element*/
-  font-size: 60px;
-  font-weight: 400; /*h1 has a highier weight by default*/
-  letter-spacing: 3.5rem;
-
-  animation-name: moveInLeft;
-  animation-duration: 3s;
-
-  /*
-  animation-delay: 3s; // wait before lanching the animation
-  animation-iteration-count: 3; // repeat the animation 3 times
-  animation-timing-function: ease-in; // defines how animation proceed (start slow and then get faster)
-  */
-}
-
-.heading-primary--sub {
-  display: block; /* to turn it into a block level element*/
-  font-size: 2rem;
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
   font-weight: 700;
-  letter-spacing: 1.74rem;
+  display: inline-block;
+  background-image: linear-gradient(to right, #c40c1b, #1425be);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 0.2rem;
+  transition: all 0.2s; }
+  .heading-secondary:hover {
+    transform: skewY(1deg) scale(1.02);
+    text-shadow: 0rem 0.3rem 10rem #000; }
 
-  margin-bottom: 3.5rem;
+.heading-tertiary {
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-transform: uppercase; }
 
-  animation: moveInRight 2s ease-out; /* we can declare animation in one shot*/
-}
+.paragraph {
+  font-size: 1.6rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
 
-@keyframes moveInLeft {
-  0% {
-    /* from start */
-    opacity: 0;
-    transform: translateX(-10rem);
-  }
-
-  60% {
-    /* in the middle */ /* to show we can even push it anyway we want*/
-    transform: translateX(1rem);
-  }
-
-  100% {
-    /* to end */
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes moveInRight {
-  0% {
-    /* from start */
-    opacity: 0;
-    transform: translateX(10rem);
-  }
-
-  100% {
-    /* to end */
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes moveInBottom {
-  0% {
-    /* from start */
-    opacity: 0;
-    transform: translateY(10rem);
-  }
-
-  100% {
-    /* to end */
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.btn:link,
-.btn:visited {
+.btn:link, .btn:visited {
   /*sudo class*/
   /* cuz we gonna have mutiple buttons*/
   text-transform: uppercase;
-  text-decoration: none; /* to delete that underlines of <a/>*/
-  padding: 1.5rem 4rem; /* 15 top button, rest left & right .. this is to make button looks big*/
-  display: inline-block; /* display it as an inline block*/
+  text-decoration: none;
+  /* to delete that underlines of <a/>*/
+  padding: 1.5rem 4rem;
+  /* 15 top button, rest left & right .. this is to make button looks big*/
+  display: inline-block;
+  /* display it as an inline block*/
   border-radius: 10rem;
-  font-size: 1.8rem;
-
-  transition: all 0.2s; /* to apply animation here (similar to using keyframes)*/
-}
+  font-size: 1.6rem;
+  transition: all 0.2s;
+  /* to apply animation here (similar to using keyframes)*/ }
 
 .btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); /* 1 for x, 2 for y, 3 if + means down*/
-}
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  /* 1 for x, 2 for y, 3 if + means down*/ }
 
 .btn:active {
   /* when clicked*/
   transform: translateY(-1px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-}
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
 .btn--white {
-  background-color: #ffff;
-  color: #777;
-}
+  background-color: #fff;
+  color: #777; }
 
 .btn--animated {
-  animation: moveInBottom 3s 0.75s; /*0.75s delay*/
-  animation-fill-mode: backwards; /*apply the animation for the 0% it's defined to */
-}
+  animation: moveInBottom 2s 0.5s;
+  /*0.5s delay*/
+  animation-fill-mode: backwards;
+  /*apply the animation for the 0% it's defined to */ }
+
+.btn-text:link, .btn-text:visited {
+  font-size: 1.6rem;
+  color: #1425be;
+  text-decoration: none;
+  /* to delete that underlines of <a/>*/
+  display: inline-block;
+  border-bottom: 0.1rem solid #1425be;
+  padding: 0.3rem;
+  transition: all 0.2s;
+  /* to apply animation here (similar to using keyframes)*/ }
+
+.btn-text:hover {
+  background-color: #1425be;
+  color: white;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  /* 1 for x, 2 for y, 3 if + means down*/
+  transform: translateY(-2px); }
+
+.btn-text:active {
+  transform: translateY(0px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+
+.composition {
+  position: relative; }
+  .composition__photo {
+    width: 55%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    border-radius: 0.2rem;
+    position: absolute;
+    outline-offset: 1.2rem;
+    transition: all 0.75s;
+    /* to apply animation here (similar to using keyframes)*/ }
+    .composition__photo--p1 {
+      top: 0rem;
+      /* these guys related to the parent element*/
+      left: 0rem; }
+    .composition__photo--p2 {
+      top: 5rem;
+      /* these guys related to the parent element*/
+      right: 0rem; }
+    .composition__photo--p3 {
+      top: 15rem;
+      left: 10%; }
+    .composition__photo:hover {
+      transform: scale(1.1) translateY(-2rem);
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+      z-index: 1;
+      outline: 0.25rem solid #c40c1b; }
+  .composition:hover .composition__photo:not(:hover) {
+    opacity: 0.5; }
+
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.7);
+  font-size: 1.5rem;
+  height: 32vh;
+  padding: 2.5rem 3rem 2.5rem;
+  text-align: center;
+  border-radius: 0.3rem;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: all 0.4s; }
+  .feature-box__icon {
+    font-size: 6rem;
+    background-image: linear-gradient(to right, #c40c1b, #1425be);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent; }
+  .feature-box:hover {
+    transform: scale(1.05) translateY(-1rem);
+    color: #000; }
+
+.row {
+  max-width: 150rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 5rem; }
+  .row::after {
+    content: "";
+    clear: both;
+    display: table; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 8rem; }
+  .row .col-1-of-2 {
+    width: calc( (100% - 8rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc( (100% - 2 * 8rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc( (2 * ((100% - 2 * 8rem) / 3)) + 8rem); }
+  .row .col-1-of-4 {
+    width: calc( (100% - 3 * 8rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc( (2 * ((100% - 3 * 8rem) / 4)) + 8rem); }
+  .row .col-3-of-4 {
+    width: calc( (3 * ((100% - 3 * 8rem) / 4)) + (2 * 8rem)); }
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(196, 12, 27, 0.684), rgba(20, 37, 190, 0.63)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+    .header__logo:hover {
+      animation: moveInRight 3s;
+      /*we can apply animation anywhere we want*/ }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    /* these guys related to the parent element*/
+    left: 50%;
+    /* these guys related to the parent element*/
+    transform: translate(-50%, -50%);
+    /* but these two related to the element itself*/
+    text-align: center;
+    /* to center the <a/> */ }
+
+.section-about {
+  background-color: #e7e4e4;
+  padding: 30rem 0;
+  margin-top: -20vh; }
+
+.section-features {
+  margin-top: -10rem;
+  padding: 20rem 0;
+  background-image: linear-gradient(to right bottom, rgba(20, 37, 190, 0.684), rgba(196, 12, 27, 0.63)), url(../img/nat-4.jpg);
+  background-size: cover;
+  background-position: top;
+  /*
+  clip-path: polygon(0 0, 100% 17%, 100% 100%, 0 83%);
+  */
+  transform: skewY(-6deg); }
+  .section-features > * {
+    transform: skewY(7deg); }

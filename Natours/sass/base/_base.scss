@@ -1,0 +1,17 @@
+*,
+*::after, /* we gotta do it or else each element with after won't be considered by these properties*/
+*::before /* same */ {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; /* to enforce inheritence */
+}
+
+html {
+  /* the root element is declared in the html selector*/
+  font-size: 62.5%; /* to apply a unit config for all elements depending on screen*/
+  /*rhis defines what 1rem is*/
+}
+
+body {
+  box-sizing: border-box; /* so that all element who are child of body inherit this*/
+}

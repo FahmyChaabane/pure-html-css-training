@@ -1,0 +1,28 @@
+.section-about {
+  background-color: $color-grey-light-1;
+  padding: 30rem 0;
+  margin-top: -20vh;
+}
+
+.section-features {
+  margin-top: -10rem;
+  padding: 20rem 0;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-dark-red, 0.684),
+      rgba($color-dark-blue, 0.63) /* valable in scsss only*/
+    ),
+    url(../img/nat-4.jpg);
+  background-size: cover;
+  background-position: top;
+  /*
+  clip-path: polygon(0 0, 100% 17%, 100% 100%, 0 83%);
+  */ // an other trick
+  transform: skewY(-6deg);
+
+  & > * {
+    // this select all direct children
+    transform: skewY(7deg);
+  }
+  // & * // select all children and grand children of the element
+}

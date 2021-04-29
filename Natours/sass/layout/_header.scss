@@ -1,0 +1,40 @@
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-dark-blue, 0.684),
+      rgba($color-dark-red, 0.63) /* valable in scsss only*/
+    ),
+    url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem;
+
+    &:hover {
+      animation: moveInRight 3s; /*we can apply animation anywhere we want*/
+    }
+  }
+
+  &__text-box {
+    position: absolute;
+    top: 40%; /* these guys related to the parent element*/
+    left: 50%; /* these guys related to the parent element*/
+    transform: translate(
+      -50%,
+      -50%
+    ); /* but these two related to the element itself*/
+
+    text-align: center; /* to center the <a/> */
+  }
+}
