@@ -29,6 +29,11 @@
     color: $color-grey;
   }
 
+  &--blue {
+    background-color: $color-very-dark-red;
+    color: $color-white;
+  }
+
   &--animated {
     animation: moveInBottom 2s 0.5s; /*0.5s delay*/
     animation-fill-mode: backwards; /*apply the animation for the 0% it's defined to */
@@ -43,7 +48,7 @@
     text-decoration: none; /* to delete that underlines of <a/>*/
     display: inline-block; //https://stackoverflow.com/questions/24090595/css-animation-doesnt-work-with-inline-display-property // so we can use on it padding, margin, all tese kind of stuffs
     border-bottom: 0.1rem solid $color-dark-red;
-    padding: 0.3rem;
+    padding: 0.3rem 1rem;
 
     transition: all 0.2s; /* to apply animation here (similar to using keyframes)*/
   }

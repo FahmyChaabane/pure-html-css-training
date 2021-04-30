@@ -1,0 +1,184 @@
+.card {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 50rem; // view issue with absolute, cuz when apply it, this card element loses it's height
+
+  &__side {
+    height: 50rem;
+    transition: all 2s ease;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 90%;
+    //text-align: center;
+    border-radius: 0.3rem;
+    box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.15);
+    overflow: hidden; // because image is overflowing the parent in the upper corners (99)
+    backface-visibility: hidden;
+
+    &--front {
+      background-color: $color-white;
+    }
+    &--back {
+      transform: rotateY(180deg);
+      &--1 {
+        background-image: linear-gradient(
+          to bottom,
+          $color-black,
+          $color-dark-red
+        );
+      }
+      &--2 {
+        background-image: linear-gradient(
+          to top,
+          $color-dark-blue,
+          $color-black
+        );
+      }
+      &--3 {
+        background-image: linear-gradient(
+          to top,
+          $color-dark-red,
+          $color-black
+        );
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    // to specify/differentiate a specific behivour for the front page
+    // can be read as : the hover of the card side element
+    transform: rotateY(-180deg);
+  }
+
+  &:hover &__side--back {
+    // to specify/differentiate a specific behivour for the back page
+    // can be read as : the hover of the card side element
+    transform: rotateY(0);
+  }
+
+  &__picture {
+    background-size: cover;
+    height: 23rem;
+    background-position: top;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 75vh,
+      0 100%
+    ); // for browsers compiatibility
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+    // border-top-left-radius: 0.3rem;
+    // border-top-right-radius: 0.3rem; these two to replace (99)
+
+    &--1 {
+      background-image: linear-gradient(
+          to bottom,
+          $color-dark-red,
+          $color-white /* valable in scsss only*/
+        ),
+        url(../img/nat-5.jpg);
+    }
+    &--2 {
+      background-image: linear-gradient(
+          to top,
+          $color-dark-blue,
+          $color-white /* valable in scsss only*/
+        ),
+        url(../img/nat-6.jpg);
+    }
+    &--3 {
+      background-image: linear-gradient(
+          to bottom,
+          $color-dark-red,
+          $color-white /* valable in scsss only*/
+        ),
+        url(../img/nat-7.jpg);
+    }
+  }
+  &__heading {
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    font-weight: 400;
+    width: 50%; // to make the h4 go in two lines
+    color: $color-white;
+
+    &-span {
+      padding: 0.7rem 1rem;
+      -webkit-box-decoration-break: clone; // in order (1) to work cuz not supported by chrome
+      box-decoration-break: clone; // apply decoration on h4 lines, same way when getting line break (1)
+      &-1 {
+        background-image: linear-gradient(
+          to bottom right,
+          rgba($color-dark-red, 0.5),
+          rgba($color-black, 0.8) /* valable in scsss only*/
+        );
+      }
+      &-2 {
+        background-image: linear-gradient(
+          to bottom right,
+          rgba($color-dark-blue, 0.5),
+          rgba($color-black, 0.8) /* valable in scsss only*/
+        );
+      }
+      &-3 {
+        background-image: linear-gradient(
+          to bottom right,
+          rgba($color-dark-red, 0.5),
+          rgba($color-black, 0.8) /* valable in scsss only*/
+        );
+      }
+    }
+  }
+  &__details {
+    padding: 2rem 6rem;
+
+    ul {
+      list-style: none;
+      margin: 0 auto;
+      text-align: center;
+
+      li {
+        padding: 1rem;
+        font-size: 1.5rem;
+        font-weight: 550;
+        &:not(:last-child) {
+          border-bottom: 0.2rem solid $color-grey-light-2;
+        }
+      }
+    }
+  }
+
+  &__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &-price {
+      color: $color-white;
+      text-align: center;
+      margin-bottom: 8rem;
+      &-only {
+        font-size: 1.5rem;
+        text-transform: uppercase;
+      }
+      &-value {
+        font-size: 6rem;
+        font-weight: 200;
+      }
+    }
+  }
+  &_btn {
+    &:hover {
+      box-shadow: 0 2rem 8rem rgba($color-white, 1);
+    }
+  }
+}

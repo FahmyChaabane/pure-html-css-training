@@ -58,6 +58,9 @@ body {
 .u-margin-bottom-big {
   margin-bottom: 8rem; }
 
+.u-margin-top-big {
+  margin-top: 8rem; }
+
 .u-margin-bottom-medium {
   margin-bottom: 4rem; }
 
@@ -155,6 +158,10 @@ body {
   background-color: #fff;
   color: #777; }
 
+.btn--blue {
+  background-color: #850404;
+  color: #fff; }
+
 .btn--animated {
   animation: moveInBottom 2s 0.5s;
   /*0.5s delay*/
@@ -168,7 +175,7 @@ body {
   /* to delete that underlines of <a/>*/
   display: inline-block;
   border-bottom: 0.1rem solid #1425be;
-  padding: 0.3rem;
+  padding: 0.3rem 1rem;
   transition: all 0.2s;
   /* to apply animation here (similar to using keyframes)*/ }
 
@@ -200,7 +207,7 @@ body {
     .composition__photo--p2 {
       top: 5rem;
       /* these guys related to the parent element*/
-      right: 0rem; }
+      right: 2rem; }
     .composition__photo--p3 {
       top: 15rem;
       left: 10%; }
@@ -215,8 +222,8 @@ body {
 .feature-box {
   background-color: rgba(255, 255, 255, 0.7);
   font-size: 1.5rem;
-  height: 32vh;
-  padding: 2.5rem 3rem 2.5rem;
+  height: 40vh;
+  padding: 2rem 2rem 0rem;
   text-align: center;
   border-radius: 0.3rem;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
@@ -231,8 +238,101 @@ body {
     transform: scale(1.05) translateY(-1rem);
     color: #000; }
 
+.card {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 50rem; }
+  .card__side {
+    height: 50rem;
+    transition: all 2s ease;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 90%;
+    border-radius: 0.3rem;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    backface-visibility: hidden; }
+    .card__side--front {
+      background-color: #fff; }
+    .card__side--back {
+      transform: rotateY(180deg); }
+      .card__side--back--1 {
+        background-image: linear-gradient(to bottom, #000, #1425be); }
+      .card__side--back--2 {
+        background-image: linear-gradient(to top, #c40c1b, #000); }
+      .card__side--back--3 {
+        background-image: linear-gradient(to top, #1425be, #000); }
+  .card:hover .card__side--front {
+    transform: rotateY(-180deg); }
+  .card:hover .card__side--back {
+    transform: rotateY(0); }
+  .card__picture {
+    background-size: cover;
+    height: 23rem;
+    background-position: top;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%); }
+    .card__picture--1 {
+      background-image: linear-gradient(to bottom, #1425be, #fff), url(../img/nat-5.jpg); }
+    .card__picture--2 {
+      background-image: linear-gradient(to top, #c40c1b, #fff), url(../img/nat-6.jpg); }
+    .card__picture--3 {
+      background-image: linear-gradient(to bottom, #1425be, #fff), url(../img/nat-7.jpg); }
+  .card__heading {
+    position: absolute;
+    top: 12rem;
+    right: 2rem;
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    font-weight: 400;
+    width: 50%;
+    color: #fff; }
+    .card__heading-span {
+      padding: 0.7rem 1rem;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone; }
+      .card__heading-span-1 {
+        background-image: linear-gradient(to bottom right, rgba(20, 37, 190, 0.5), rgba(0, 0, 0, 0.8)); }
+      .card__heading-span-2 {
+        background-image: linear-gradient(to bottom right, rgba(196, 12, 27, 0.5), rgba(0, 0, 0, 0.8)); }
+      .card__heading-span-3 {
+        background-image: linear-gradient(to bottom right, rgba(20, 37, 190, 0.5), rgba(0, 0, 0, 0.8)); }
+  .card__details {
+    padding: 2rem 6rem; }
+    .card__details ul {
+      list-style: none;
+      margin: 0 auto;
+      text-align: center; }
+      .card__details ul li {
+        padding: 1rem;
+        font-size: 1.5rem;
+        font-weight: 550; }
+        .card__details ul li:not(:last-child) {
+          border-bottom: 0.2rem solid #eee; }
+  .card__cta {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+    .card__cta-price {
+      color: #fff;
+      text-align: center;
+      margin-bottom: 8rem; }
+      .card__cta-price-only {
+        font-size: 1.5rem;
+        text-transform: uppercase; }
+      .card__cta-price-value {
+        font-size: 6rem;
+        font-weight: 200; }
+  .card_btn:hover {
+    box-shadow: 0 2rem 8rem white; }
+
 .row {
-  max-width: 150rem;
+  max-width: 140rem;
   margin: 0 auto; }
   .row:not(:last-child) {
     margin-bottom: 5rem; }
@@ -263,16 +363,19 @@ body {
   background-size: cover;
   background-position: top;
   position: relative;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
   .header__logo-box {
     position: absolute;
     top: 4rem;
     left: 4rem; }
   .header__logo {
-    height: 3.5rem; }
-    .header__logo:hover {
-      animation: moveInRight 3s;
-      /*we can apply animation anywhere we want*/ }
+    height: 4.5rem;
+    animation: moveInRight 3s;
+    /*
+    &:hover {
+      animation: moveInRight 3s; we can apply animation anywhere we want
+    } */ }
   .header__text-box {
     position: absolute;
     top: 40%;
@@ -290,8 +393,8 @@ body {
   margin-top: -20vh; }
 
 .section-features {
-  margin-top: -10rem;
-  padding: 20rem 0;
+  margin-top: -8rem;
+  padding: 20rem 10rem;
   background-image: linear-gradient(to right bottom, rgba(20, 37, 190, 0.684), rgba(196, 12, 27, 0.63)), url(../img/nat-4.jpg);
   background-size: cover;
   background-position: top;
@@ -301,3 +404,8 @@ body {
   transform: skewY(-6deg); }
   .section-features > * {
     transform: skewY(7deg); }
+
+.section-tours {
+  padding: 25rem 10rem 15rem;
+  background-color: #e7e4e4;
+  margin-top: -8rem; }

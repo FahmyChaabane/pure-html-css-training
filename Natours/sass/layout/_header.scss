@@ -10,6 +10,12 @@
   background-position: top;
   position: relative;
 
+  -webkit-clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 75vh,
+    0 100%
+  ); // for browsers compiatibility
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 
   &__logo-box {
@@ -19,11 +25,13 @@
   }
 
   &__logo {
-    height: 3.5rem;
+    height: 4.5rem;
+    animation: moveInRight 3s;
 
+    /*
     &:hover {
-      animation: moveInRight 3s; /*we can apply animation anywhere we want*/
-    }
+      animation: moveInRight 3s; we can apply animation anywhere we want
+    } */
   }
 
   &__text-box {
