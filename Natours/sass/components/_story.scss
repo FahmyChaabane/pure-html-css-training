@@ -1,0 +1,70 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color: $color-black, $alpha: 0.1);
+  background-color: rgba($color: $color-white, $alpha: 0.65);
+  border-radius: 0.5rem;
+  padding: 6rem;
+  padding-left: 9rem; // cuz the circle konda got out of the limit from the left (after transform)
+  font-size: $default-font-size;
+  transition: all 0.3s;
+  transform: skewX(-7deg);
+  //clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%); this works perfectly fine two too
+  outline-offset: 1.2rem;
+
+  &__shape {
+    cursor: pointer;
+    height: 15rem;
+    width: 15rem;
+    //background-color: salmon;
+    float: left; // when floated, is better not to mess with margin and paddings (we can do a transform instead).. "this float wouldn't have worked without defining hight and width"
+    -webkit-shape-outside: circle(50% at 50% 50%); // browsers compatibility
+    shape-outside: circle(
+      50% at 50% 50%
+    ); // define some kind of limit so that what's outside take the shape of the border
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-2rem) skewX(7deg); // to take it away a little from the text
+    position: relative;
+
+    backface-visibility: hidden;
+    &-image {
+      height: 100%;
+      width: 100%; // apparently to make the photo take 100% of the space of the parent (without this, img generate its own width (and height?))
+      transition: transform 1s;
+      transform: scale(1.3);
+    }
+
+    &-caption {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -30%);
+      color: $color-white;
+      text-transform: uppercase;
+      font-size: 1.7rem;
+      text-align: center;
+      opacity: 0;
+      transition: all 1s;
+    }
+  }
+
+  &:hover &__shape-caption {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+
+  &:hover &__shape-image {
+    filter: blur(0.25rem) brightness(50%);
+    transform: translateY(-1rem) scale(1.1);
+  }
+
+  &:hover {
+    outline: 0.25rem solid $color-dark-red;
+    box-shadow: 0 2.5rem 4rem rgba($color-black, 0.5);
+    color: $color-black;
+  }
+
+  &__text {
+    transform: skewX(7deg);
+  }
+}

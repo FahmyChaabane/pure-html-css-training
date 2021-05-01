@@ -22,7 +22,7 @@
 
   & > * {
     // this select all direct children
-    transform: skewY(7deg);
+    transform: skewY(6deg);
   }
   // & * // select all children and grand children of the element
 }
@@ -31,4 +31,48 @@
   padding: 25rem 10rem 15rem;
   background-color: $color-grey-light-1;
   margin-top: -8rem;
+}
+
+.section-stories {
+  position: relative;
+  padding: 15rem 0rem;
+}
+
+.section-book {
+  padding: 10rem 0rem;
+  background-image: linear-gradient(
+    to bottom,
+    $color-dark-blue,
+    rgba($color-black, 0.9)
+  );
+}
+
+.book {
+  background-image: linear-gradient(
+      to bottom,
+      rgba($color-dark-blue, 0.8),
+      rgba($color-black, 0.7)
+    ),
+    url(../img/nat-10.jpg);
+  background-size: 100%; // similar as cover
+  background-position: top;
+  border-radius: 0.3rem;
+  box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 1);
+
+  height: 70vh; // jonas 50rem
+
+  &-gradient {
+    height: 100%;
+    background-image: linear-gradient(
+      105deg,
+      rgba($color-white, 0.6) 0%,
+      rgba($color-white, 0.6) 50%,
+      transparent 50%
+    );
+
+    &-form {
+      padding: 7rem 5rem;
+      width: 50%;
+    }
+  }
 }

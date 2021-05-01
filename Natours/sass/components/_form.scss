@@ -1,0 +1,51 @@
+.form {
+  &_group {
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  &_input {
+    font-size: 1.5rem;
+    font-family: inherit; // force inheritence here, cuz input override the inherited font
+    color: inherit; // force inheritence of the color $color-grey
+    padding: 1.5rem 2rem;
+    border-radius: 0.2rem;
+    background-color: rgba($color-white, $alpha: 0.8);
+    border: none;
+    // display: block; // to get the full line
+    width: 80%; // specify exact width
+    transition: all 0.2s;
+    border-bottom: 0.3rem solid transparent;
+    &:focus {
+      outline: none; // browser give a border by default, we want to deny it.
+      box-shadow: 0 1rem 2rem rgba($color-black, $alpha: 0.6);
+      border-bottom: 0.3rem solid $color-greyed-green;
+    }
+
+    &:focus:invalid {
+      // can be used for input live validation
+      border-bottom: 0.3rem solid $color-dark-blue;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $color-greyed-blue;
+    }
+  }
+
+  &_label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    display: block;
+    opacity: 1;
+    color: $color-black;
+  }
+
+  &_input:placeholder-shown + &_label {
+    //when placehilder is show, then we can change the label behaviour. (we add + cuz label isn't child of input, it is a sibling of input)
+    opacity: 0;
+    visibility: 0;
+  }
+}

@@ -1,0 +1,15 @@
+.bg-video {
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  //overflow: hidden; // for possible rendering problems
+  opacity: 0.3;
+  &__content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // video will fill the entire parent while still maintaining its aspect ration
+  }
+}

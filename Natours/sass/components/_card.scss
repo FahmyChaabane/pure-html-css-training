@@ -49,13 +49,13 @@
 
   &:hover &__side--front {
     // to specify/differentiate a specific behivour for the front page
-    // can be read as : the hover of the card side element
+    // can be read as : as soon as the card is hovered, then we wanna change the front side of the card
     transform: rotateY(-180deg);
   }
 
   &:hover &__side--back {
     // to specify/differentiate a specific behivour for the back page
-    // can be read as : the hover of the card side element
+    // can be read as : as soon as the card is hovered, then we wanna change the back side of the card
     transform: rotateY(0);
   }
 
@@ -178,7 +178,7 @@
   }
   &_btn {
     &:hover {
-      box-shadow: 0 2rem 8rem rgba($color-white, 1);
+      box-shadow: 0 1rem 5rem 0.5rem rgba($color-white, 1);
     }
   }
 }
