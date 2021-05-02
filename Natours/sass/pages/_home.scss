@@ -39,7 +39,7 @@
 }
 
 .section-book {
-  padding: 10rem 0rem;
+  padding: 10rem 10rem;
   background-image: linear-gradient(
     to bottom,
     $color-dark-blue,
@@ -50,7 +50,7 @@
 .book {
   background-image: linear-gradient(
       to bottom,
-      rgba($color-dark-blue, 0.8),
+      rgba($color-dark-blue, 0.2),
       rgba($color-black, 0.7)
     ),
     url(../img/nat-10.jpg);
@@ -71,7 +71,7 @@
     );
 
     &-form {
-      padding: 7rem 5rem;
+      padding: 8rem 5rem;
       width: 50%;
     }
   }

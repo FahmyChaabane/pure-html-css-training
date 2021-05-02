@@ -15,7 +15,7 @@
     border: none;
     // display: block; // to get the full line
     width: 80%; // specify exact width
-    transition: all 0.2s;
+    transition: all 0.5s;
     border-bottom: 0.3rem solid transparent;
     &:focus {
       outline: none; // browser give a border by default, we want to deny it.
@@ -38,14 +38,68 @@
     font-weight: 700;
     margin-left: 2rem;
     margin-top: 0.7rem;
-    display: block;
+    display: block; // we added this so that we could add these margin top and left
     opacity: 1;
     color: $color-black;
+    transition: all 1s;
   }
 
   &_input:placeholder-shown + &_label {
-    //when placehilder is show, then we can change the label behaviour. (we add + cuz label isn't child of input, it is a sibling of input)
+    //when placehilder is show, then we can change the label behaviour. (we add + cuz label isn't child of input, it is a sibling of input) (+ for right next sibling, ~ any sibling)
+    // in html, if we had label before input, this wouldn't work
+    // placeholder shown means we haven't write anything yet
     opacity: 0;
-    visibility: 0;
+    //visibility: hidden;
+    transform: translateY(-1rem);
+  }
+
+  &_radio-group {
+    display: inline-block;
+    width: 40%;
+  }
+
+  &_radio-label {
+    //font-size: $default-font-size;
+    cursor: pointer;
+    position: relative;
+    padding-left: 2.5rem;
+    color: $color-greyed-blue;
+  }
+
+  &_radio-button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    border: 0.2rem solid $color-dark-red;
+
+    &::after {
+      content: "";
+      position: absolute;
+      height: 0.8rem;
+      width: 0.8rem;
+      border-radius: 50%;
+      background-color: $color-dark-red;
+      //   top: 0.24rem;
+      //   left: 0.26rem;
+      top: 49.6%;
+      left: 50.8%;
+      transform: translate(-50%, -50%);
+      transition: all 0.5s;
+      opacity: 0;
+    }
+  }
+
+  &_radio-input {
+    visibility: hidden; // It is not visible but gets up it’s original space whereas,
+  }
+
+  &_radio-input:checked ~ &_radio-label &_radio-button {
+    // or +
+    &::after {
+      opacity: 1;
+    }
   }
 }

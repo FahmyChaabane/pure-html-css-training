@@ -1,4 +1,5 @@
 .btn {
+  &,
   &:link,
   &:visited {
     /*sudo class*/
@@ -11,6 +12,10 @@
     font-size: $default-font-size;
 
     transition: all 0.2s; /* to apply animation here (similar to using keyframes)*/
+
+    // Changes for the <button> element
+    border: none;
+    cursor: pointer;
   }
 
   &:hover {
@@ -18,7 +23,9 @@
     box-shadow: 0 1rem 2rem rgba($color-black, 0.2); /* 1 for x, 2 for y, 3 if + means down*/
   }
 
-  &:active {
+  &:active,
+  &:focus {
+    // focus added for <button> element
     /* when clicked*/
     transform: translateY(-1px);
     box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
@@ -31,6 +38,11 @@
 
   &--blue {
     background-color: $color-very-dark-red;
+    color: $color-white;
+  }
+
+  &--red {
+    background-color: $color-very-dark-blue;
     color: $color-white;
   }
 
@@ -56,7 +68,7 @@
     background-color: $color-dark-red;
     color: white;
     box-shadow: 0 1rem 2rem rgba($color-black, 0.2); /* 1 for x, 2 for y, 3 if + means down*/
-    transform: translateY(-2px);
+    transform: translateY(-0.2rem);
   }
   &:active {
     transform: translateY(0px);

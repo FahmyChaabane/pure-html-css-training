@@ -53,19 +53,22 @@ body {
     transform: translateY(0); } }
 
 .u-center-text {
-  text-align: center; }
+  text-align: center !important; }
 
 .u-margin-bottom-big {
-  margin-bottom: 8rem; }
-
-.u-margin-top-big {
-  margin-top: 8rem; }
+  margin-bottom: 8rem !important; }
 
 .u-margin-bottom-medium {
-  margin-bottom: 4rem; }
+  margin-bottom: 4rem !important; }
+
+.u-margin-top-big {
+  margin-top: 8rem !important; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem !important; }
 
 .u-margin-bottom-small {
-  margin-bottom: 1.5rem; }
+  margin-bottom: 1.5rem !important; }
 
 body {
   font-family: "Lato", sans-serif;
@@ -129,7 +132,7 @@ body {
   .paragraph:not(:last-child) {
     margin-bottom: 3rem; }
 
-.btn:link, .btn:visited {
+.btn, .btn:link, .btn:visited {
   /*sudo class*/
   /* cuz we gonna have mutiple buttons*/
   text-transform: uppercase;
@@ -142,14 +145,16 @@ body {
   border-radius: 10rem;
   font-size: 1.6rem;
   transition: all 0.2s;
-  /* to apply animation here (similar to using keyframes)*/ }
+  /* to apply animation here (similar to using keyframes)*/
+  border: none;
+  cursor: pointer; }
 
 .btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   /* 1 for x, 2 for y, 3 if + means down*/ }
 
-.btn:active {
+.btn:active, .btn:focus {
   /* when clicked*/
   transform: translateY(-1px);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
@@ -160,6 +165,10 @@ body {
 
 .btn--blue {
   background-color: #850404;
+  color: #fff; }
+
+.btn--red {
+  background-color: #192277;
   color: #fff; }
 
 .btn--animated {
@@ -184,7 +193,7 @@ body {
   color: white;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   /* 1 for x, 2 for y, 3 if + means down*/
-  transform: translateY(-2px); }
+  transform: translateY(-0.2rem); }
 
 .btn-text:active {
   transform: translateY(0px);
@@ -408,7 +417,7 @@ body {
   background-color: rgba(255, 255, 255, 0.8);
   border: none;
   width: 80%;
-  transition: all 0.2s;
+  transition: all 0.5s;
   border-bottom: 0.3rem solid transparent; }
   .form_input:focus {
     outline: none;
@@ -426,11 +435,131 @@ body {
   margin-top: 0.7rem;
   display: block;
   opacity: 1;
-  color: #000; }
+  color: #000;
+  transition: all 1s; }
 
 .form_input:placeholder-shown + .form_label {
   opacity: 0;
-  visibility: 0; }
+  transform: translateY(-1rem); }
+
+.form_radio-group {
+  display: inline-block;
+  width: 40%; }
+
+.form_radio-label {
+  cursor: pointer;
+  position: relative;
+  padding-left: 2.5rem;
+  color: #4e4469; }
+
+.form_radio-button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  border: 0.2rem solid #1425be; }
+  .form_radio-button::after {
+    content: "";
+    position: absolute;
+    height: 0.8rem;
+    width: 0.8rem;
+    border-radius: 50%;
+    background-color: #1425be;
+    top: 49.6%;
+    left: 50.8%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s;
+    opacity: 0; }
+
+.form_radio-input {
+  visibility: hidden; }
+
+.form_radio-input:checked ~ .form_radio-label .form_radio-button::after {
+  opacity: 1; }
+
+.navigation_checkbox {
+  display: none; }
+
+.navigation_button {
+  cursor: pointer;
+  background-color: #fff;
+  height: 5rem;
+  width: 5rem;
+  position: fixed;
+  border-radius: 50%;
+  top: 6rem;
+  right: 6rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.6);
+  z-index: 1000; }
+
+.navigation_icon {
+  position: fixed;
+  top: 5.5rem;
+  right: 6.5rem;
+  font-size: 4rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent; }
+
+.navigation_background {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  position: fixed;
+  top: 6.5rem;
+  right: 6.5rem;
+  background-image: radial-gradient(#1425be, #000);
+  z-index: -100;
+  transition: all 0.5s;
+  transform: scale(1); }
+
+.navigation_nav {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transition: all 0.5s;
+  transform: translateY(10rem);
+  z-index: -500; }
+
+.navigation_list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  text-align: center; }
+
+.navigation_item {
+  margin: 1rem; }
+
+.navigation_link:link, .navigation_link:visited {
+  font-size: 3rem;
+  font-weight: 300;
+  color: #fff;
+  display: inline-block;
+  padding: 1rem 3rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-image: linear-gradient(-120deg, rgba(196, 12, 27, 0.6) 0%, rgba(196, 12, 27, 0.6) 50%, transparent 50%);
+  background-size: 220%;
+  transition: all 1s; }
+
+.navigation_link:hover {
+  background-position: 100%;
+  transform: translateX(2rem); }
+
+.navigation_checkbox:checked ~ .navigation_background {
+  transform: scale(100);
+  z-index: 100; }
+
+.navigation_checkbox:checked ~ .navigation_nav {
+  transform: translateY(0rem);
+  z-index: 500; }
 
 .row {
   max-width: 140rem;
@@ -488,6 +617,54 @@ body {
     text-align: center;
     /* to center the <a/> */ }
 
+.footer {
+  background-color: #000;
+  padding: 10rem 0rem;
+  font-size: 1.4rem;
+  color: #fff; }
+  .footer__logo-box {
+    /*because image is inline elemented, we can center it pretty is by :*/
+    text-align: center; }
+  .footer__logo {
+    width: 15rem;
+    height: auto; }
+  .footer__navigation {
+    border-top: #777 solid 0.1rem;
+    display: inline-block;
+    padding-top: 1rem;
+    padding-left: 4rem;
+    padding-right: 5rem; }
+  .footer__list {
+    list-style: none; }
+  .footer__item {
+    display: inline-block; }
+    .footer__item:not(:last-child) {
+      margin-right: 2rem; }
+  .footer__link:link, .footer__link:visited {
+    /*sudo class*/
+    /* cuz we gonna have mutiple buttons*/
+    text-transform: uppercase;
+    text-decoration: none;
+    /* to delete that underlines of <a/>*/
+    display: inline-block;
+    /* display it as an inline block*/
+    color: #fff;
+    font-weight: 550;
+    transition: all 0.3s;
+    /* to apply animation here (similar to using keyframes)*/ }
+  .footer__link:hover,
+  .footer__link :active {
+    transform: translateY(-0.3rem) scale(1.1);
+    background-image: linear-gradient(to right, #c40c1b, #1425be);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent; }
+  .footer__copyright {
+    border-top: #777 solid 0.1rem;
+    padding-top: 1rem;
+    width: 80%;
+    float: right; }
+
 .section-about {
   background-color: #e7e4e4;
   padding: 30rem 0;
@@ -516,11 +693,11 @@ body {
   padding: 15rem 0rem; }
 
 .section-book {
-  padding: 10rem 0rem;
+  padding: 10rem 10rem;
   background-image: linear-gradient(to bottom, #c40c1b, rgba(0, 0, 0, 0.9)); }
 
 .book {
-  background-image: linear-gradient(to bottom, rgba(196, 12, 27, 0.8), rgba(0, 0, 0, 0.7)), url(../img/nat-10.jpg);
+  background-image: linear-gradient(to bottom, rgba(196, 12, 27, 0.2), rgba(0, 0, 0, 0.7)), url(../img/nat-10.jpg);
   background-size: 100%;
   background-position: top;
   border-radius: 0.3rem;
@@ -530,5 +707,5 @@ body {
     height: 100%;
     background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.6) 50%, transparent 50%); }
     .book-gradient-form {
-      padding: 7rem 5rem;
+      padding: 8rem 5rem;
       width: 50%; }

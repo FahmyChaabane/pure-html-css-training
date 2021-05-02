@@ -1,0 +1,75 @@
+.footer {
+  background-color: $color-black;
+  padding: 10rem 0rem;
+  font-size: 1.4rem;
+  color: $color-white;
+
+  &__logo-box {
+    // position: absolute;
+    // //height: 10vh;
+    // left: 50%;
+    // top: 10%;
+    // transform: translate(-50%);
+    /*because image is inline elemented, we can center it pretty is by :*/
+    text-align: center;
+  }
+
+  &__logo {
+    width: 15rem;
+    height: auto;
+  }
+
+  &__navigation {
+    border-top: $color-grey solid 0.1rem;
+    display: inline-block; // bcuz doesn't occuppy 100% of the avaiable width, just what the content needs // for that the border above match exactly when the last li ends
+    padding-top: 1rem;
+    padding-left: 4rem;
+    padding-right: 5rem;
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    display: inline-block; // it is easier to make them in same line
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      /*sudo class*/
+      /* cuz we gonna have mutiple buttons*/
+      text-transform: uppercase;
+      text-decoration: none; /* to delete that underlines of <a/>*/
+      display: inline-block; /* display it as an inline block*/ //https://stackoverflow.com/questions/24090595/css-animation-doesnt-work-with-inline-display-property
+      color: $color-white;
+      font-weight: 550;
+
+      transition: all 0.3s; /* to apply animation here (similar to using keyframes)*/
+    }
+
+    &:hover,
+    :active {
+      transform: translateY(-0.3rem) scale(1.1);
+      background-image: linear-gradient(
+        to right,
+        $color-dark-blue,
+        $color-dark-red /* valable in scsss only*/
+      );
+      background-clip: text; // to get rid of warning the below one kept yelloing about, not sure what it does
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+  }
+
+  &__copyright {
+    border-top: $color-grey solid 0.1rem;
+    padding-top: 1rem;
+    width: 80%;
+    float: right;
+  }
+}
