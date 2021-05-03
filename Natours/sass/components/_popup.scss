@@ -1,0 +1,99 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba($color-black, 0.9);
+  z-index: -1;
+  transform: scale(0.5);
+
+  opacity: 0;
+  // visibility: none; jonas added this
+  transition: all 0.3s;
+
+  &_content {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    @include absCenter;
+    //height: 70%; // let browser figure it out by itself (depend on content) // let the content decides the height
+    width: 70%;
+    background-color: $color-white;
+    box-shadow: 0 2rem 4rem rgba($color-black, $alpha: 0.2);
+    border-radius: 0.3rem;
+
+    overflow: hidden; // so that part which is overflowing the image will not be visible anymore
+
+    display: table;
+  }
+
+  &_left {
+    display: table-cell;
+    width: 33.3333%;
+    height: 100%;
+  }
+
+  &_img {
+    display: block; // without this, there would be space below images (not too sure why)
+    width: 100%;
+  }
+
+  &_right {
+    width: 66.6666%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 3rem 5rem;
+  }
+
+  &_text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+
+    -moz-column-count: 2; // browsers compatibility
+    -moz-column-gap: 4rem; // browsers compatibility
+    -moz-column-rule: 0.1rem solid $color-grey-light-2; // browsers compatibility
+
+    column-count: 2; // number counts
+    column-gap: 4rem; // default 1em = 17px // space between them
+    column-rule: 0.1rem solid $color-grey-light-2; // line in the middle
+
+    -moz-hyphens: auto; // browsers compatibility // mozilla
+    -ms-hyphens: auto; // browsers compatibility // IE
+    -webkit-hyphens: auto; // browsers compatibility // chrome and safari
+    hyphens: auto; // lang="en" need in html tag
+
+    /*
+        in real senario, we don't really have to add these prefixes by hand, instead there will be nice tools to use, one of them called 'auto prefixer'
+    */
+  }
+
+  &:target {
+    // listen to change of url as far as i understand
+    z-index: 9999;
+    transform: scale(1);
+    opacity: 1;
+    // visibility: visible; jonas added this
+  }
+
+  &_close {
+    &:link,
+    &:visited {
+      position: absolute;
+      top: 1rem;
+      right: 2.5rem;
+      //   height: 20rem;
+      //   width: 20rem;
+      font-size: 5rem; // apparently this right here apply a some padding (made the height too long) (1)
+      line-height: 1; // can be fixed by this. (1)
+      display: inline-block;
+      text-decoration: none;
+      color: rgba($color-black, 0.9);
+    }
+
+    &:hover {
+      color: $color-dark-blue;
+    }
+  }
+}

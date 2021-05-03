@@ -338,7 +338,7 @@ body {
         font-size: 6rem;
         font-weight: 200; }
   .card_btn:hover {
-    box-shadow: 0 1rem 5rem 0.5rem white; }
+    box-shadow: 0 0.2rem 4rem 0.2rem rgba(255, 255, 255, 0.2); }
 
 .story {
   width: 75%;
@@ -479,6 +479,72 @@ body {
 .form_radio-input:checked ~ .form_radio-label .form_radio-button::after {
   opacity: 1; }
 
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: -1;
+  transform: scale(0.5);
+  opacity: 0;
+  transition: all 0.3s; }
+  .popup_content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    background-color: #fff;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    overflow: hidden;
+    display: table; }
+  .popup_left {
+    display: table-cell;
+    width: 33.3333%;
+    height: 100%; }
+  .popup_img {
+    display: block;
+    width: 100%; }
+  .popup_right {
+    width: 66.6666%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 3rem 5rem; }
+  .popup_text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+    -moz-column-count: 2;
+    -moz-column-gap: 4rem;
+    -moz-column-rule: 0.1rem solid #eee;
+    column-count: 2;
+    column-gap: 4rem;
+    column-rule: 0.1rem solid #eee;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+    /*
+        in real senario, we don't really have to add these prefixes by hand, instead there will be nice tools to use, one of them called 'auto prefixer'
+    */ }
+  .popup:target {
+    z-index: 9999;
+    transform: scale(1);
+    opacity: 1; }
+  .popup_close:link, .popup_close:visited {
+    position: absolute;
+    top: 1rem;
+    right: 2.5rem;
+    font-size: 5rem;
+    line-height: 1;
+    display: inline-block;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.9); }
+  .popup_close:hover {
+    color: #c40c1b; }
+
 .navigation_checkbox {
   display: none; }
 
@@ -492,17 +558,43 @@ body {
   top: 6rem;
   right: 6rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.6);
+  text-align: center;
   z-index: 1000; }
 
 .navigation_icon {
-  position: fixed;
-  top: 5.5rem;
-  right: 6.5rem;
-  font-size: 4rem;
-  background-color: rgba(0, 0, 0, 0.6);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent; }
+  margin-top: 2.3rem;
+  position: relative; }
+  .navigation_icon, .navigation_icon::before, .navigation_icon::after {
+    width: 3rem;
+    height: 0.2rem;
+    background-color: #000;
+    display: inline-block; }
+  .navigation_icon::before, .navigation_icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    transition: all 0.2s; }
+  .navigation_icon::before {
+    top: -0.75rem; }
+  .navigation_icon::after {
+    top: 0.75rem; }
+
+.navigation_button:hover .navigation_icon::before {
+  top: -0.9rem; }
+
+.navigation_button:hover .navigation_icon::after {
+  top: 0.9rem; }
+
+.navigation_checkbox:checked ~ .navigation_button .navigation_icon {
+  background-color: transparent; }
+
+.navigation_checkbox:checked ~ .navigation_button .navigation_icon::before {
+  top: 0;
+  transform: rotate(135deg); }
+
+.navigation_checkbox:checked ~ .navigation_button .navigation_icon::after {
+  top: 0;
+  transform: rotate(-135deg); }
 
 .navigation_background {
   height: 4rem;
@@ -618,7 +710,7 @@ body {
     /* to center the <a/> */ }
 
 .footer {
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.9);
   padding: 10rem 0rem;
   font-size: 1.4rem;
   color: #fff; }
@@ -647,7 +739,6 @@ body {
     text-decoration: none;
     /* to delete that underlines of <a/>*/
     display: inline-block;
-    /* display it as an inline block*/
     color: #fff;
     font-weight: 550;
     transition: all 0.3s;

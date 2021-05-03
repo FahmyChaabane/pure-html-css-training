@@ -13,20 +13,62 @@
     top: 6rem;
     right: 6rem;
     box-shadow: 0 1rem 3rem rgba($color-black, 0.6);
-    //text-align: center;
+    text-align: center;
 
     z-index: 1000;
   }
 
   &_icon {
-    position: fixed;
-    top: 5.5rem;
-    right: 6.5rem;
-    font-size: 4rem;
-    background-color: rgba($color-black, 0.6);
-    background-clip: text; // to get rid of warning the below one kept yelloing about, not sure what it does
-    -webkit-background-clip: text;
-    color: transparent;
+    margin-top: 2.3rem;
+    position: relative;
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 0.2rem;
+      background-color: $color-black;
+      display: inline-block;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      //margin-top: 2.5rem;
+      left: 0;
+
+      transition: all 0.2s;
+    }
+
+    &::before {
+      top: -0.75rem;
+    }
+    &::after {
+      top: 0.75rem;
+    }
+  }
+
+  &_button:hover &_icon {
+    &::before {
+      top: -0.9rem;
+    }
+    &::after {
+      top: 0.9rem;
+    }
+  }
+
+  &_checkbox:checked ~ &_button &_icon {
+    background-color: transparent;
+  }
+
+  &_checkbox:checked ~ &_button &_icon::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+
+  &_checkbox:checked ~ &_button &_icon::after {
+    top: 0;
+    transform: rotate(-135deg);
   }
 
   &_background {
@@ -39,7 +81,7 @@
     background-image: radial-gradient($color-dark-red, $color-black); // round
 
     z-index: -100;
-    transition: all 0.5s;
+    transition: all 0.5s; // the 0.5 can be ease or whatever // also can be customised : cubic-bezier(x,x,x,x)
     transform: scale(1);
   }
 
@@ -76,7 +118,7 @@
       font-size: 3rem;
       font-weight: 300;
       color: $color-white;
-      display: inline-block; // so that we can set a padding, and also because : cannot animate a inline displayed element  (4448)
+      display: inline-block; // so that we can set a padding (on top), and also because : cannot animate a inline displayed element  (4448)
       padding: 1rem 3rem;
       text-decoration: none;
       text-transform: uppercase;

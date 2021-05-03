@@ -18,9 +18,9 @@
   <body>
     <div class="navigation">
       <input type="checkbox" class="navigation_checkbox" id="navi-toggle" />
-      <label for="navi-toggle" class="navigation_button"
-        ><i class="navigation_icon icon-basic-menu"> </i
-      ></label>
+      <label for="navi-toggle" class="navigation_button">
+        <span class="navigation_icon">&nbsp;</span>
+      </label>
       <div class="navigation_background">&nbsp;</div>
       <nav class="navigation_nav">
         <ul class="navigation_list">
@@ -52,7 +52,9 @@
           <span class="heading-primary--main">Outdoors</span>
           <span class="heading-primary--sub">is where life happens</span>
         </h1>
-        <a href="#" class="btn btn--white btn--animated"> Discover our tours</a>
+        <a href="#section-tours" class="btn btn--white btn--animated">
+          Discover our tours</a
+        >
       </div>
     </header>
 
@@ -112,7 +114,7 @@
           <div class="col-1-of-4">
             <div class="feature-box">
               <i class="feature-box__icon icon-basic-world"> </i>
-              <h3 class="heading-tertiary1 u-margin-bottom-small">
+              <h3 class="heading-tertiary u-margin-bottom-small">
                 Explore the world
               </h3>
               <p class="feature-box__text">
@@ -124,7 +126,7 @@
           <div class="col-1-of-4">
             <div class="feature-box">
               <i class="feature-box__icon icon-basic-compass"> </i>
-              <h3 class="heading-tertiary1 u-margin-bottom-small">
+              <h3 class="heading-tertiary u-margin-bottom-small">
                 Meet nature
               </h3>
               <p class="feature-box__text">
@@ -136,7 +138,7 @@
           <div class="col-1-of-4">
             <div class="feature-box">
               <i class="feature-box__icon icon-basic-map"> </i>
-              <h3 class="heading-tertiary1 u-margin-bottom-small">
+              <h3 class="heading-tertiary u-margin-bottom-small">
                 Find your way
               </h3>
               <p class="feature-box__text">
@@ -148,7 +150,7 @@
           <div class="col-1-of-4">
             <div class="feature-box">
               <i class="feature-box__icon icon-basic-heart"> </i>
-              <h3 class="heading-tertiary1 u-margin-bottom-small">
+              <h3 class="heading-tertiary u-margin-bottom-small">
                 Live a healthier life
               </h3>
               <p class="feature-box__text">
@@ -159,7 +161,7 @@
           </div>
         </div>
       </section>
-      <section class="section-tours">
+      <section class="section-tours" id="section-tours">
         <div class="u-center-text u-margin-bottom-big">
           <h2 class="heading-secondary">Most popular tours</h2>
         </div>
@@ -189,7 +191,7 @@
                     <p class="card__cta-price-only">only</p>
                     <p class="card__cta-price-value">$239</p>
                   </div>
-                  <a href="#" class="btn btn--white card_btn"> Purchase</a>
+                  <a href="#popup" class="btn btn--white card_btn"> Purchase</a>
                 </div>
               </div>
             </div>
@@ -220,7 +222,9 @@
                       <p class="card__cta-price-only">only</p>
                       <p class="card__cta-price-value">$199</p>
                     </div>
-                    <a href="#" class="btn btn--white card_btn"> Purchase</a>
+                    <a href="#popup" class="btn btn--white card_btn">
+                      Purchase</a
+                    >
                   </div>
                 </div>
               </div>
@@ -252,7 +256,9 @@
                       <p class="card__cta-price-only">only</p>
                       <p class="card__cta-price-value">$299</p>
                     </div>
-                    <a href="#" class="btn btn--white card_btn"> Purchase</a>
+                    <a href="#popup" class="btn btn--white card_btn">
+                      Purchase</a
+                    >
                   </div>
                 </div>
               </div>
@@ -441,6 +447,36 @@
           </div>
         </div>
       </footer>
+
+      <div class="popup" id="popup">
+        <div class="popup_content">
+          <div class="popup_left">
+            <img src="img/nat-9.jpg" alt="Tour photo" class="popup_img" />
+            <img src="img/nat-8.jpg" alt="Tour photo" class="popup_img" />
+          </div>
+          <div class="popup_right">
+            <a href="#section-tours" class="popup_close">&times;</a>
+            <h2 class="heading-secondary u-margin-bottom-small">
+              Start booking now
+            </h2>
+            <h3 class="heading-tertiary u-margin-bottom-small">
+              Important &ndash; Please read these terms before booking
+            </h3>
+            <p class="popup_text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus,
+              minima numquam beatae debitis necessitatibus laudantium explicabo.
+              Praesentium, minima eos dolorum sequi voluptatum cum error optio
+              sint deleniti officiis, doloremque consequatur? Lorem ipsum, dolor
+              sit amet consectetur adipisicing elit. Inventore, ducimus debitis
+              aperiam placeat sequi excepturi minus asperiores ratione, labore
+              non laudantium dolore ab culpa mollitia praesentium repudiandae
+              veritatis fuga vitae! Inventore, ducimus debitis aperiam placeat
+              sequi excepturi minus asperiores ratione.
+            </p>
+            <a href="#" class="btn btn--blue">Book now</a>
+          </div>
+        </div>
+      </div>
     </main>
 
     <!--
