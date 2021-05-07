@@ -1,4 +1,18 @@
 /*
+0 - 600px    : Phone  
+600 - 300px  : Table portrait
+900 - 1200px : Tablet landscape
+[1200 - 1800]: is where our normal styles apply
+1800px +     : Big desktop 
+*/
+/*
+$breakpoint argument choices:
+- phone  
+- tab-port
+- tab-land
+- big-desktop
+*/
+/*
 COLORS:
 Light green: #7ed56f
 Medium green: #55c57a
@@ -16,11 +30,27 @@ html {
   /* the root element is declared in the html selector*/
   font-size: 62.5%;
   /* to apply a unit config for all elements depending on screen*/
-  /*rhis defines what 1rem is*/ }
+  /*this defines what 1rem is*/ }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 37.5em) {
+    html {
+      font-size: 30%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
 
 body {
   box-sizing: border-box;
-  /* so that all element who are child of body inherit this*/ }
+  /* so that all element who are child of body inherit this*/
+  padding: 2rem; }
+  @media (max-width: 56.25em) {
+    body {
+      padding: 0; } }
 
 @keyframes moveInLeft {
   0% {
@@ -73,10 +103,8 @@ body {
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-size: 1.6rem;
   line-height: 1.7;
-  color: #777;
-  padding: 2rem; }
+  color: #777; }
 
 .heading-primary {
   color: #fff;
@@ -97,6 +125,10 @@ body {
       animation-iteration-count: 3; // repeat the animation 3 times
       animation-timing-function: ease-in; // defines how animation proceed (start slow and then get faster)
       */ }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        font-size: 5rem;
+        letter-spacing: 1rem; } }
   .heading-primary--sub {
     display: block;
     /* to turn it into a block level element*/
@@ -106,6 +138,10 @@ body {
     margin-bottom: 3.5rem;
     animation: moveInRight 2s ease-out;
     /* we can declare animation in one shot*/ }
+    @media (max-width: 37.5em) {
+      .heading-primary--sub {
+        font-size: 1rem;
+        letter-spacing: 0.5rem; } }
 
 .heading-secondary {
   font-size: 3.5rem;
@@ -118,6 +154,12 @@ body {
   color: transparent;
   letter-spacing: 0.2rem;
   transition: all 0.2s; }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 3rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
   .heading-secondary:hover {
     transform: skewY(1deg) scale(1.02);
     text-shadow: 0rem 0.3rem 10rem #000; }
@@ -560,6 +602,10 @@ body {
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.6);
   text-align: center;
   z-index: 1000; }
+  @media (max-width: 56.25em) {
+    .navigation_button {
+      top: 4rem;
+      right: 4rem; } }
 
 .navigation_icon {
   margin-top: 2.3rem;
@@ -607,6 +653,10 @@ body {
   z-index: -100;
   transition: all 0.5s;
   transform: scale(1); }
+  @media (max-width: 56.25em) {
+    .navigation_background {
+      top: 4.5rem;
+      right: 4.5rem; } }
 
 .navigation_nav {
   height: 100vh;
@@ -658,6 +708,13 @@ body {
   margin: 0 auto; }
   .row:not(:last-child) {
     margin-bottom: 5rem; }
+    @media (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 2rem; } }
+  @media (max-width: 56.25em) {
+    .row {
+      max-width: 70rem;
+      padding: 0 3rem; } }
   .row::after {
     content: "";
     clear: both;
@@ -666,6 +723,13 @@ body {
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 8rem; }
+      @media (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 2rem; } }
+    @media (max-width: 56.25em) {
+      .row [class^="col-"] {
+        width: 100% !important; } }
   .row .col-1-of-2 {
     width: calc( (100% - 8rem) / 2); }
   .row .col-1-of-3 {
@@ -687,6 +751,10 @@ body {
   position: relative;
   -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+  @media (max-width: 37.5em) {
+    .header {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%); } }
   .header__logo-box {
     position: absolute;
     top: 4rem;
@@ -714,6 +782,9 @@ body {
   padding: 10rem 0rem;
   font-size: 1.4rem;
   color: #fff; }
+  @media (max-width: 56.25em) {
+    .footer {
+      padding: 8rem 0; } }
   .footer__logo-box {
     /*because image is inline elemented, we can center it pretty is by :*/
     text-align: center; }
@@ -726,6 +797,10 @@ body {
     padding-top: 1rem;
     padding-left: 4rem;
     padding-right: 5rem; }
+    @media (max-width: 56.25em) {
+      .footer__navigation {
+        width: 100%;
+        text-align: center; } }
   .footer__list {
     list-style: none; }
   .footer__item {
@@ -755,6 +830,10 @@ body {
     padding-top: 1rem;
     width: 80%;
     float: right; }
+    @media (max-width: 56.25em) {
+      .footer__copyright {
+        width: 100%;
+        float: none; } }
 
 .section-about {
   background-color: #e7e4e4;

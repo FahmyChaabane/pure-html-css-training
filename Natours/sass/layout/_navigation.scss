@@ -16,6 +16,11 @@
     text-align: center;
 
     z-index: 1000;
+
+    @include respond(tab-port) {
+      top: 4rem;
+      right: 4rem;
+    }
   }
 
   &_icon {
@@ -83,6 +88,11 @@
     z-index: -100;
     transition: all 0.5s; // the 0.5 can be ease or whatever // also can be customised : cubic-bezier(x,x,x,x)
     transform: scale(1);
+
+    @include respond(tab-port) {
+      top: 4.5rem;
+      right: 4.5rem;
+    }
   }
 
   &_nav {

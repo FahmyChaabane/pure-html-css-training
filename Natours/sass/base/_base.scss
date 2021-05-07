@@ -8,10 +8,32 @@
 
 html {
   /* the root element is declared in the html selector*/
-  font-size: 62.5%; /* to apply a unit config for all elements depending on screen*/
-  /*rhis defines what 1rem is*/
+  font-size: 62.5%; /* to apply a unit config for all elements depending on screen*/ // 1rem = 10px; (16*62.5)/100 = 10px
+  /*this defines what 1rem is*/
+  // define the size of our entire layout
+
+  @include respond(tab-land) {
+    font-size: 56.25%; // 1rem = 9px;
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; // 1rem = 8px;
+  }
+
+  @include respond(phone) {
+    font-size: 30%; // 1rem = 3.8px;
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; // 1rem = 12px;
+  }
 }
 
 body {
   box-sizing: border-box; /* so that all element who are child of body inherit this*/
+  padding: 2rem;
+
+  @include respond(tab-port) {
+    padding: 0;
+  }
 }
