@@ -61,12 +61,73 @@
 }
 
 ///////////////////////////////
+.user_nav_btn-box:checked ~ .notification {
+  opacity: 1;
+  height: auto;
+  transform: translateY(0%);
+  z-index: 500;
+}
+
+.notification {
+  // display: none;
+  opacity: 0;
+  height: 0rem;
+  overflow: hidden;
+  transform: translateY(-20%);
+  position: absolute;
+  top: 7rem;
+  right: 0rem;
+  background-color: #fff;
+  width: 25.2rem;
+  border: 0.01rem solid var(--color-grey-dark-1);
+  box-shadow: var(--shadow-light);
+  border-top: 0;
+  border-right: 0;
+  transition: all 0.5s;
+
+  &-list {
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  &-item {
+    list-style: none;
+    padding: 0.5rem;
+    border-radius: 0.4rem;
+    display: flex;
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+    &:hover {
+      background-color: var(--color-grey-light-2);
+    }
+  }
+
+  &-photo {
+    height: 3.75rem;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+  &-details {
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+}
 // USER NAVIGATION
 .user_nav {
   align-self: stretch; // to make it fill the entire container // to override the "align-items: center" in the parent (in header) flex
 
   display: flex;
   align-items: center; // seem to be useless
+
+  &_btn {
+    &-box {
+      display: none; // It is hidden and takes no space.
+    }
+    &-label {
+      cursor: pointer;
+    }
+  }
 
   & > * {
     // all direct children elements

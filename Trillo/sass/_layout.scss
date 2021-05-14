@@ -22,6 +22,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  position: relative;
 }
 
 .content {
@@ -44,6 +46,7 @@
 
 .hotel-view {
   flex: 1;
+  // position: relative;
   //height: 80rem;
 }
 

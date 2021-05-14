@@ -4,14 +4,15 @@
   grid-row: 1 / span 7;
   grid-column: 1 / 2;
 
-  display: flex;
-  justify-content: center;
   //align-items: center;
-  margin-top: 3rem;
 }
 
 .click {
+  display: flex;
+  justify-content: center;
   cursor: pointer;
+  margin-top: 5rem;
+  padding-bottom: 2rem;
 }
 
 .nav-btn {
